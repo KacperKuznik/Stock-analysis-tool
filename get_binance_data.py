@@ -27,6 +27,7 @@ def get_data(start_time, symbol):
 
   return res.json()
 
+#usage
 start_time = datetime.datetime(2024, 4, 10)
 symbol = "BTCUSDT"
 
