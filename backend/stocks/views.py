@@ -1,3 +1,10 @@
-from django.shortcuts import render
+from django.http import HttpResponse
 
-# Create your views here.
+from .models import KlineEntry
+
+def get_data(request, symbol):
+    return HttpResponse("You're getting " + symbol)
+
+
+def update(request, symbol):
+    return HttpResponse("You're updating " + symbol)
