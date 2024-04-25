@@ -21,15 +21,16 @@ example api response
 ]
 """
 
-def get_data(start_time, symbol):
+def get_data(start_time, symbol, interval):
   unix_start_time = int(start_time.strftime("%s")) * 1000 
-  res = requests.get('https://www.binance.com/api/v3/klines', params={"symbol": symbol, "interval": "1d", "startTime": unix_start_time})
+  res = requests.get('https://www.binance.com/api/v3/klines', params={"symbol": symbol, "interval": interval, "startTime": unix_start_time})
 
   return res.json()
 
 #usage
 start_time = datetime.datetime(2024, 4, 10)
 symbol = "BTCUSDT"
+interval = "1d"
 
-for kline in get_data(start_time, symbol):
+for kline in get_data(start_time, symbol, interval):
     print(kline)
