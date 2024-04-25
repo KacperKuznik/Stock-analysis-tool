@@ -2,6 +2,10 @@ from django.http import HttpResponse, JsonResponse
 from scripts import get_binance_data
 from .models import KlineEntry
 from datetime import datetime
+import os
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
+
 def get_data(request, symbol):
     data = get_binance_data.run()
     res = []
@@ -11,7 +15,6 @@ def get_data(request, symbol):
         record["y"] = row[1:5]
         res.append(record)
     return JsonResponse({"data": res})
-
 
 def update(request, symbol):
     return HttpResponse("You're updating " + symbol)
