@@ -1,10 +1,12 @@
 <template>
   <div>
     <VueApexCharts :options="chartOptions" :series="series" type="candlestick" height="350" width="800" />
+    <IntervalPicker />
   </div>
 </template>
   
 <script setup>
+import IntervalPicker from "./IntervalPicker.vue"
 import { ref, onMounted } from 'vue';
 import axios from "axios"
 import VueApexCharts from 'vue3-apexcharts';
@@ -42,6 +44,12 @@ const chartOptions = ref({
   title: {
     text: 'CandleStick Chart',
     align: 'left',
+  },
+  chart: {
+    zoom: {
+        enabled: true,
+        type: 'xy',  
+    }
   },
   xaxis: {
     type: 'datetime',
